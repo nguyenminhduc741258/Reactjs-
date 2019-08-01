@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .App {
+    height: 100vh;
+    display: flex;
+    color: white;
+  
+  }
+  
+  
+  .App__Form {
+    width: 100%;
+    padding: 25px 40px;
+    overflow: auto;
+  }
+  .FromCenter {
+    margin-bottom: 100px;
+  }
+  .FormField {
+    margin:  55px 20px 20px 25px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: auto;
+    padding-top: 5px;
+    padding-bottom: 100px;
+  
+  
+  
+  }
+  .FormField__left {
+    display: block;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: blue;
+    width: 45%;
+  
+  }
+  .FormField__right {
+    display: block;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: blue;
+    margin-left: 350px;
+    margin-top: -311px;
+
+  
+  }
+  .FormField__Label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 30px;
+    text-align:center;
+    color: red;
+    padding-top: 25px;
+    padding-bottom: 20px;
+  
+  
+  }
+  .FormTitle {
+    font-weight: 300;
+    margin-bottom: 50px;
+  }
+  .container {
+    padding: 16px;
+  }
+  form {
+    box-sizing: border-box;
+    width: 800px;
+    margin: 100px auto 0;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
+    padding-bottom: 40px;
+    border-radius: 5px;
+  }
+  .FormField__right > input {
+    margin: 25px 25px;
+    width: 100px;
+    display: block;
+    border: none;
+    padding: 7px 0;
+    border-bottom: solid 1px #1abc9c;
+    transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
+    background-position: -200px 0;
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    color: #0e6252;
+  }
+  button {
+    border: none;
+    background: #1abc9c;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 6px;
+    width: 100px;
+    margin-left: 100px;
+    color: white;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+  .bt-singup{
+    width: 150px;
+    margin:20px;
+  }
+  .container {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
