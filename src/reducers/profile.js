@@ -1,29 +1,35 @@
 import * as Types from './../actions/typeAction'
 
 
-  var inintialState = {
-    display_name:'',
-    display_info:'',
-    phone:'',
-    avatar:''
-  };
-  const appReduce = ( state = inintialState , action ) => {
-      switch (action.Types) {
-          case Types.SHOW_PROFILE : 
-          
-            return {
-              ...state,
-          display_name: action.state.display_name, 
-          display_info: action.state.display_info,
-          phone: action.state.phone,
-          avatar: action.state.avatar
+var initialState = {
+  display_name: '',
+  display_info: '',
+  avatar: '',
+  phone: '',
+}
 
-            };
-          
-          default:
-            return state;
-        }
-          
+var appReduce = (state = initialState, action) => {
+  switch (action.type) {
+      case Types.GET_PROFILE:
+          console.log("dataProfile: ", action.state);
+          return {
+            ...state,
+              
+              display_info: action.state.display_info,
+              phone: action.state.phone,
+              display_name: action.state.display_name,
+          };
+
+      case Types.UPDATE_PROFILE:
+          console.log("data", action.state);
+          return {
+              ...action.state
+          };
+
+      default: return state;
+
   }
 
-  export default appReduce ;
+}
+
+export default appReduce;

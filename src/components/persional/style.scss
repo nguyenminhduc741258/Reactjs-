@@ -11,7 +11,7 @@
   }
   
   
-  .App__Form {
+  .App__Form {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                																																																		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     width: 100%;
     padding: 25px 40px;
     overflow: auto;
@@ -30,21 +30,23 @@
   
   
   }
-  .FormField__left {
+  .Forminfo__left {
     display: block;
     text-transform: uppercase;
     font-size: 15px;
-    color: blue;
+    color: black;
     width: 45%;
+    margin-left: 20px;
+
   
   }
-  .FormField__right {
+  .Forminfo__right {
     display: block;
     text-transform: uppercase;
     font-size: 15px;
-    color: blue;
-    margin-left: 350px;
-    margin-top: -311px;
+    color: black;
+    margin-left: 500px;
+    margin-top: -291px;
 
   
   }
@@ -74,9 +76,9 @@
     padding-bottom: 40px;
     border-radius: 5px;
   }
-  .FormField__right > input {
+  .Forminfo__right > input {
     margin: 25px 25px;
-    width: 100px;
+    width: 300px;
     display: block;
     border: none;
     padding: 7px 0;
@@ -86,11 +88,25 @@
     background-position: -200px 0;
     background-size: 200px 100%;
     background-repeat: no-repeat;
-    color: #0e6252;
+    color: gray;
   }
-  button {
+  .Forminfo__left > input {
+    margin: 25px 25px;
+    width: 300px;
+    display: block;
     border: none;
-    background: #1abc9c;
+    padding: 7px 0;
+    border-bottom: solid 1px #1abc9c;
+    transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
+    background-position: -200px 0;
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    color: gray;
+  }
+  button {                                                                                                                                                                                                                                                                                                                                                              
+    border: none;
+    background:#1abc9c;
     cursor: pointer;
     border-radius: 3px;
     padding: 6px;
@@ -99,15 +115,126 @@
     color: white;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
   }
-  .bt-singup{
-    width: 150px;
+  .bt-save{
+    background:red;
+    width: 200px;
     margin:20px;
   }
   .container {
     text-align: center;
-    margin: 24px 0 12px 0;
+    margin: 0px 0 4px 0;
   }
   img.avatar {
-    width: 40%;
+    width: 20%;
     border-radius: 50%;
   }
+  .forminfotion {
+    box-sizing: border-box;
+    width: 900px;
+    margin: 100px auto 0;
+    margin-bottom: 50px;
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+    // border: solid gray;	
+} 
+@media only screen and (max-width: 800px) {
+
+  .forminfotion {
+    width:  300px;
+    height: 900px;
+  }
+  .Forminfo__right 
+  {
+    margin-top: 10px;
+    margin-left:  25px;
+  }
+  .bt-save{
+    margin-top : -10px;
+    margin-left:  150px;
+  }
+  img.avatar {
+    width: 15%;
+  }
+  .FormField__Label {
+    margin-top: 2px;
+  }
+  .Forminfo__left > input {
+    margin: 10px 10px;
+    width: 250px;
+
+  }
+  .Forminfo__right > input {
+    margin: 5px 5px;
+    width: 250px;
+
+  }
+    .bt-save{
+       margin-top: 10px;
+       width: 150px;
+       margin-left: 100px;
+    }
+
+}
+@media only screen and (max-width: 650px)  {
+
+.forminfotion {
+  width:  400px;
+  height: 550px;
+    }
+  .FormField__Label {
+    margin-top: 2px;
+  }
+  .Forminfo__left > input {
+    margin: 10px 10px;
+
+  }
+  .Forminfo__right > input {
+    margin: 5px 5px;
+  }
+    .bt-save{
+       margin-top: 10px;
+    }
+}
+@media only screen and (max-width: 600px)  {
+  .forminfotion {
+       height: 500px;
+       width: 350px;
+         }
+         .bt-save{
+          width: 200px;
+          margin-left: 100px;
+       }
+}
+@media only screen and (max-height: 1024px)  {
+  .forminfotion {
+    height: 800px;
+      }
+}
+@media only screen and (max-width: 330px)  {
+  .forminfotion {
+    height: 100px;
+    width: 300px;
+      }
+      .FormField__Label {
+        margin-top: 2px;
+      }
+      .Forminfo__left > input {
+        margin: 10px 10px;
+        width: 200px;
+    
+      }
+      .Forminfo__right > input {
+        margin: 5px 5px;
+        width: 200px;
+      }
+        .bt-save{
+           margin-top: 10px;
+           width : 150px;
+        }
+}
+@media only screen and  (max-height: 1400px) {
+
+  .forminfotion {
+    height: 550px;
+      }
+}

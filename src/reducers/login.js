@@ -5,20 +5,21 @@ import * as Types from './../actions/typeAction'
         email : '', 
         password :'' ,
         isLoading: false,
+        token:''
 
     }
     const appReduce = ( state = inintialState , action ) => {
         switch (action.Types) {
             case Types.LOGIN : 
-             
-              return {
-                ...state,
-                email: action.email,
-                password: action.password,
-                isLoading: true,
+            console.log( action.email, action.password, action.token);
+            return {
+              ...state,
+              email :action.state.email,
+              password : action.state.password,
+              isLoading : true,
+              token : action.state.token,
+            };
 
-              };
-            
             default:
               return state;
           }

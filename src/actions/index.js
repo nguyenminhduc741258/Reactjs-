@@ -2,11 +2,12 @@ import axios from "axios";
 import * as Types from './typeAction'
 
 
-export const login = (email, password) => {
+export const login = (email, password, isLoading) => {
   return {
     Types : Types.LOGIN,
     email: email,
-		password: password
+    password: password ,
+    isLoading : isLoading
   };
 };
 
@@ -29,12 +30,13 @@ export const loginAPI = (email, password) => {
             alert(' fail login  ')
           }
           console.log(res);
+          localStorage.setItem("token", res.data.token);		
+          console.log("token",res.data.token);
           dispatch(login(email, password))
 
 
         })
-        .catch(er =>{
-          console.log(er);
+        .catch(er  =>{
         });
   };
 };
@@ -74,30 +76,93 @@ export const RegisterAPI = ( email , password )=> {
         });
   };
 };
-export const showProfile = (state ) => {
+export const getProfile = state => {
+  console.log(state);
   return {
-    type: Types.SET_PROFILE,
-    state: state,
+      type: Types.GET_PROFILE,
+      state
   };
 };
-export const Show_ProfileAPI = (state) => {
+
+
+
+export const getProfileRequest = () => {
   return dispatch => {
-    var token = localStorage.getItem("token");
-    axios({
-      method: "post",
-      url: "https://terralogic-training.web.app/api/set_profile ",
-      headers: {
-        "x-user-token": token
-      },
-      data: state
-    })
-      .then(res => {
-        console.log(res);
-        if (res.status >= 200 && res.status < 300) {
-          alert(' save user Successfully ')
-        }
-        dispatch(showProfile(res.data));
-       })
-      .catch(er => {});
+      var token = localStorage.getItem("token");
+      axios({
+          method: "post",
+          url: "https://terralogic-training.firebaseapp.com/api/get_profile",
+          headers: {
+              "x-user-token": token
+          }
+      }).then(res => {
+          console.log(res);
+          dispatch(getProfile(res.data.data));
+      })
   };
-};
+}
+
+export const updateProfile = (state) => {
+  return {
+      type: Types.UPDATE_PROFILE,
+      state
+  };
+
+}
+
+
+export const updateProfileRequest = (state) => {
+  return dispatch => {
+      var token = localStorage.getItem("token");
+      console.log("token:", token);
+      axios({
+          method: "post",
+          url: "https://terralogic-training.firebaseapp.com/api/set_profile",
+          headers: {
+              "x-user-token": token
+          },
+          data: state
+      }).then(res => {
+          console.log(res);
+          dispatch(updateProfile(res.data.data));
+          alert("Update Success!!!");
+      })
+          .catch(er => {
+              alert("Update Failed");
+          });
+  };
+}
+
+
+
+export const logout = (state) => {
+  return {
+      type: Types.LOGOUT,
+      state
+  };
+
+
+}
+
+
+export const logoutRequest = () => {
+  return dispatch => {
+      var token = localStorage.getItem("token");
+      axios({
+          method: "post",
+          url: "https://terralogic-training.web.app/api/logout",
+          headers: {
+              "x-user-token": token
+          }
+      })
+          .then(res => {
+              console.log('Logout', res);
+              dispatch(logout());
+              localStorage.clear();
+
+          })
+          .catch(er => {
+              alert("ERROR");
+          });
+  };
+}

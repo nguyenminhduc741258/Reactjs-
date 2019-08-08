@@ -3,7 +3,7 @@ import './style.scss';
 import * as actions from './../../actions/index';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import history from './../../../src/history'
 
 class Left extends Component{
 
@@ -12,20 +12,39 @@ class Left extends Component{
 		this.handleChange = this.handleChange.bind(this);
 	    this.state = {
 	    		email:'',
-		    	password:'',
-
+                password:'',
+                token:'',
+                isLoading: false,
         };     
     }
     onSave = (e) =>{
         e.preventDefault();
-        this.props.onLogin(this.state.email,this.state.password);
+        this.props.onLogin(this.state.email,this.state.password, this.state.isLoading);
+        console.log(this.state.email,this.state.password, this.state.isLoading);
+        history.push("/profile");
     }
     handleChange(event){
     	this.setState({
     		[event.target.name]:event.target.value
     	})
-	}
+    }
+    // componentWillReceiveProps(nextProps){
+    //     this.setState({
+    //       isLoading: nextProps.login.isLoading,
+
+    //     });
+    //     console.log(nextProps);
+
+    //   }
+    
+    
 	render(){
+      
+        // if(this.state.isLoading  ){
+        //      history.push("/profile");
+
+        // }
+
 
         var { email, password } = this.state;
 
@@ -40,7 +59,7 @@ class Left extends Component{
             <div className="App__Form">
                 <form   onSubmit ={this.onSave} >
 
-                    <label class="FormField__Label" > login</label>
+                    <label class="FormField__loginLabel"> login</label>
                     <div class="FormField__User">
                         <label for="uname"><b>Email</b></label>
                         <input 
@@ -62,13 +81,13 @@ class Left extends Component{
 }
 const mapStateToProps = (state) => {
 	return {
-		tasks: state.tasks
-	}
+		login: state.login
+	};
 };
 
 const mapDispatchToProps = (dispatch, props) => {
 	return{
-		onLogin : (email, password) =>{
+		onLogin : (email , password, isLoading) =>{
 			dispatch(actions.loginAPI(email, password));
 		}
 	}

@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import './style.scss';
 
 
-class footer extends Component {
+class Footer extends Component {
     render() {
         return (
-            
-            <footer>					
-	    			    <div className="text-footer">
-	    					<p>© 2019 Terralogic, Inc</p>
-	    				</div>	
-				</footer>
+        
+				<div className="footer">
+						<p> &copy; 2019 TERRALOGIC.INC.</p>
+				</div>
 	    		
-      
-    
+
         );
     }
 }
 
-export default footer;
+export default Footer;

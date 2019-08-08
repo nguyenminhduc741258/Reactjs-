@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss';
-import './typepass.js';
 import {connect} from 'react-redux';
+import { Link } from "react-router-dom";
 import * as actions from './../../actions/index';
 
 class Register extends Component {
@@ -12,11 +12,22 @@ class Register extends Component {
 	    this.state = {
 	    		email:'',
                 password:'',
+                confirmPassword: ""
+
         };     
     }
     onSave = (e) =>{
-        e.preventDefault();
-        this.props.onRegister(this.state.email,this.state.password);
+        var { password , confirmPassword } = this.state;
+
+        if (confirmPassword === password)
+        {
+            e.preventDefault();
+            this.props.onRegister(this.state.email,this.state.password);
+        }
+        else{
+            alert("Check Confirm password ");
+
+        }
     }
     handleChange(event){
     	this.setState({
@@ -24,9 +35,9 @@ class Register extends Component {
     	})
 	}
 
-
+    var 
     render(){
-        var { email, password } = this.state ;
+        var { email, password, confirmPassword } = this.state ;
             return (
                 
                 <div className="App">
@@ -42,11 +53,14 @@ class Register extends Component {
                             < input type="text" name="email" placeholder="Enter email" value={email} onChange={this.handleChange} />
     
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" name="password" placeholder="Enter password"  value={password} id = "password"  onChange={this.handleChange}/>
-                            <label for="typepassword"><b>Enter Password</b></label>
-                            <input type="password" placeholder="Confirm Password" id="confirm_password" />
+                            <input type="password" name="password" placeholder="Enter password"  value={password}  onChange={this.handleChange}/>
+                            <label for="confirmPassword"><b>Enter Password</b></label>
+                            <input type="password" placeholder="Confirm Password" name ="confirmPassword" value ={confirmPassword}  onChange={this.handleChange}/>
                            
                             <button className="singup" type="Submit">REGISTER</button>
+                            <Link to= "/">
+                            <button className="registerlogin" >LOGIN</button>
+                            </Link>
                             <label className="logoo" ><b>@2019 Terralogic Inc</b></label>
     
                         </div>

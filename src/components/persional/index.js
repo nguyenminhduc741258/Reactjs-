@@ -5,60 +5,83 @@ import {connect} from 'react-redux';
 
 
 class Persional extends Component {
-
     constructor(props) {
-		super(props);
-		this.handleChange = this.handleChange.bind(this);
-	    this.state = {
-	    		display_name:'',
-				display_info:'',
-				phone:'',
-				avatar:''
+        super(props);
+        this.state = {
+            display_name: '',
+            display_info: '',
+            phone: '',
 
-		    };
+        }
+        this.onChange = this.onChange.bind(this);
     }
-    handleChange(event){
-    	this.setState({
-    		[event.target.name]:event.target.value
-    	})
+
+
+    onChange = (e) => {
+        var target = e.target;
+        var name = target.name;
+        var value = target.value;
+        this.setState({
+            [name]: value
+        });
     }
-    onSave = (e) =>{
+
+
+    onUpdate = (e) => {
         e.preventDefault();
-        this.props.onUpdateProfle(this.state.display_info,this.state.display_name,this.state.phone,this.state.avatar);
+        this.props.onUpdateProfile(this.state);
     }
 
+    componentWillMount() {
+        this.props.onGetProfile();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('nextProps', nextProps);
+        var { profile } = nextProps;
+        this.setState ({
+            display_name : profile.display_name,
+            display_info : profile.display_info,
+            phone : profile.phone
+        });
+    }
+   
     render() {
-        var { display_name, display_info, phone, avatar } = this.state;
+
+        var { display_name, display_info, phone } = this.state;
+
         return (
             <div className="App">
-                <div className= "forminfo"  onSubmit = {this.onSave}>
+                
+                <div className= "forminfotion"  onSubmit = {this.onSave}>
 
                     <div class="container" >
-                        <img src="https://cdn2.iconfinder.com/data/icons/business-management-52/96/Artboard_20-512.png" className="avatar"  value={avatar} name="avatar" onChange={this.handleChange}/>
+                        <img src="https://cdn2.iconfinder.com/data/icons/business-management-52/96/Artboard_20-512.png" className="avatar" />
                     </div>
-                    <div class="FormField__left">
+                    <div class="Forminfo__left">
                         <label for="uname"><b>Displayname</b></label>
-                        <input type="text" placeholder="Enter Username" value={display_name} name="display_name" onChange={this.handleChange}  />
+                        <input type="text" placeholder="Enter Username" value={display_name} name="display_name"  onChange={this.onChange}  />
 
                         <label for="psw"><b>Email</b></label>
-                        <input type="Email" placeholder="Enter Email" name="eml" />
+                        <input type="Email" placeholder="Enter Email" name="eml"  onChange={this.onChange} />
                         <label for="psw"><b>Enter Password</b></label>
-                        <input type="password" placeholder="New Password" name="psw" />
+                        <input type="password" placeholder="New Password" name="password"  
+                         onChange={this.onChange}/>
                        
                        
 
                     </div>
-                    <div className="Form__right" >
+                    <div className="Forminfo__right" >
                         <label for="name"><b>Your Info</b></label>
-                        <input type="text" placeholder="Enter Info"  value={display_info} name="display_info" onChange={this.handleChange}  />
+                        <input type="text" placeholder="Enter Info"  value={display_info} name="display_info"  onChange={this.onChange} />
                         <label for="psw"><b>Phone Number</b></label>
-                        <input type="phone" placeholder="Enter Phone" name="phone" value ={phone}  onChange={this.handleChange} />
+                        <input type="phone" placeholder="Enter Phone" name="phone" value ={phone}  onChange={this.onChange} />
                         <label for="psw"><b>Comfim Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="typsw" />
+                        <input type="password" placeholder="Enter Password" name="typepassword"   onChange={this.onChange}/>
 
 
 
-                        <button className="bt-save" type="Submit">UPDATE PROFILE</button>
+                        <button className="bt-save"  onClick={this.onUpdate}>UPDATE PROFILE</button>
                     </div>
 
                 </div>
@@ -68,13 +91,24 @@ class Persional extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch, props) => {
-	return{
-		onUpdateProfle :() =>{
-			dispatch(actions.Show_ProfileAPI(this.state));
-		}
-	}
+const mapStateToProps = (state) => {
+    return {
+        profile: state.profile
+    }
 }
 
-export default connect(null, mapDispatchToProps)(Persional);
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        onGetProfile: () => {
+            dispatch(actions.getProfileRequest());
+        },
+
+        onUpdateProfile: (state) => {
+            dispatch(actions.updateProfileRequest(state));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Persional);
 
