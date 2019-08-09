@@ -5,7 +5,7 @@
   
   .App {
     height: 100vh;
-    display: flex;
+    // display: flex;
     color: white;
   
   }
@@ -39,7 +39,7 @@
     display: block;
     text-transform: uppercase;
     font-size: 15px;
-    color: blue;
+    color: black;
   
   }
   .FormField__loginLabel {
@@ -123,26 +123,124 @@ img.image {
     font-size: 25px;
 }
 @media only screen and (max-width: 500px) {
-  .App_Aside {
-    height: 250px;
-    width: 800%;
-
-  }
+   .App_Aside {
+    height: 200px ;
+    width: 600px;
+   }
   .App__Form {
     margin-top:  240px;
     margin-left: -150px; 
   }
   .logo{
-    margin-top:  350px;
+    margin-top:  300px;
+    margin-right: -150px;
   }
   .line{
     font-size: 15px;
   }
   img.image {
-     margin-top:  60px;
+     margin-top:  90px;
 
   }
    .from  {
-    margin-left: -200px;
+    margin-left: -500px;
+    width: 200px;
+    height: 100px;
+
+  }
+  .FormField__User input {
+    width: 250px;
+    margin: 10px 10px;
+    padding: 1px 0;
+
+
+  }
+  .bt-loginsu{
+    width: 100px;
+    margin-left:    70px;
+  }
+  .FormField__loginLabel {
+    display: block;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align:center;
+    color:  #1abc9c;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .App {
+    height: 100vh;
+    display: inline-block;
+    color: white;
+  
+  }
+  .FormField__User {
+    font-size: 10px;
+
   }
 }
+@media only screen and (max-width: 1024px) {
+  .App_Aside {
+    height: 300px ;
+    width: auto;
+   }
+  .App__Form {
+    margin-top:  240px;
+    margin-left: -400px; 
+    padding-top:  0px;
+    width:  100%;;
+  }
+  .logo{
+    margin-top:  400px;
+    margin-right: -70px;
+    margin-left: -120px;
+  }
+  .from  {
+    width:  100px;
+    height:  200px;
+  }
+  img.image {
+    margin-top:  50px;
+
+ }
+ .FormField__User input {
+  margin: 20px 20px;
+
+ }
+  
+}
+@media only screen and (min-width: 700px) {
+  .App_Aside {
+    height: 300px ;
+    width: 400px;
+   }
+   .App__Form {
+    margin-left: -750px; 
+
+   }
+}
+// @media only screen and (max-width: 800px) , (min-width: 750px) {
+//   .App__Form {
+//     margin-left: -620px; 
+//   }
+// }
+
+
+@media only screen and (min-width: 1400px) {
+  .App__Form {
+    margin-top: 200px; 
+    margin-left: -600px; 
+
+   }
+   .logo{ 
+     margin-top: 400px;
+   }
+}
+@media only screen and (min-width: 2500px) {
+  .App__Form {
+    margin-left: -900px; 
+
+   }
+}
+

@@ -145,7 +145,7 @@ export const logout = (state) => {
 }
 
 
-export const logoutRequest = () => {
+export const logoutRequest = (token) => {
   return dispatch => {
       var token = localStorage.getItem("token");
       axios({
@@ -162,7 +162,6 @@ export const logoutRequest = () => {
 
           })
           .catch(er => {
-              alert("ERROR");
           });
   };
 }
